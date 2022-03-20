@@ -10,16 +10,25 @@ const handleUserPage = async (req, res) => {
   return res.render("user", {users});
 };
 
-const handleCreateNewUser = (req, res) => {
+const handleCreateNewUser = async (req, res) => {
   const userInfo = {...req.body};
   
-  userService.createNewUser(userInfo);
+  await userService.createNewUser(userInfo);
 
-  return res.send("handleCreateNewUser");
-};;
+  return res.redirect("/user");
+};
+
+const handleDeleteUser = async (req, res) => {
+  const {id} = req.params;
+  
+  await userService.deleteUser(id);
+
+  return res.redirect("/user");
+}
 
 module.exports = {
   handleHelloWorld,
   handleUserPage,
   handleCreateNewUser,
+  handleDeleteUser,
 };
