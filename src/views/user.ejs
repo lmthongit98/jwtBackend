@@ -78,7 +78,9 @@
                     <td><%= user.email %></td>
                     <td><%= user.username %></td>
                     <td>
-                      <button class="btn btn-secondary">Edit</button>
+                      <a class="btn btn-secondary" href="/update-user/<%= user.id %>">
+                        Edit
+                      </a>
                       <form class="d-inline" action="/delete-user/<%= user.id %>" method="post">
                         <button type="submit" class="btn btn-danger">Delete</button>
                       </form>
